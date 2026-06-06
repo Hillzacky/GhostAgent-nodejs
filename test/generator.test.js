@@ -20,3 +20,11 @@ function test() {
 }
 
 test();
+
+const assert = require('assert');
+const generator = require('../src/index');
+
+console.log("Running unit tests...");
+const ua = generator({ device: 'desktop' });
+assert.ok(ua.includes('Mozilla'), "Test gagal: Format UA tidak valid");
+console.log("Test passed!");
