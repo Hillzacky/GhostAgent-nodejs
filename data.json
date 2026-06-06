@@ -1,0 +1,5 @@
+{
+  "chrome": { "major": 149, "minorRange": 40 },
+  "firefox": { "major": 151, "minorRange": 30 },
+  "safari": { "major": 17, "minorRange": 10 }
+}
