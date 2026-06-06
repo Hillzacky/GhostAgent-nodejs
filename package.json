@@ -1,0 +1,10 @@
+{
+  "name": "ghostagent-nodejs",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "author": "Hillzacky",
+  "scripts": {
+    "test": "node test/generator.test.js",
+    "update": "node src/data-fetcher.js"
+  }
+}
