@@ -1,0 +1,22 @@
+const https = require('https');
+const fs = require('fs');
+const path = require('path');
+
+const savePath = path.join(__dirname, '../data.json');
+
+https.get('https://omahproxy.appspot.com/all.json', (res) => {
+    let body = '';
+    res.on('data', c => body += c);
+    res.on('end', () => {
+        const stable = JSON.parse(body).find(v => v.os === 'win' && v.channel === 'stable');
+        if (stable) {
+            const major = parseInt(stable.version.split('.')[0]);
+            fs.writeFileSync(savePath, JSON.stringify({
+                chrome: { major, minorRange: 40 },
+                firefox: { major: major - 2, minorRange: 30 },
+                safari: { major: 17, minorRange: 10 }
+            }, null, 2));
+            console.log('Database updated.');
+        }
+    });
+});
